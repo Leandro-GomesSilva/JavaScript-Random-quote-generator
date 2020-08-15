@@ -152,7 +152,7 @@ function printQuote () {
   HTML_text += `</p>`;
   document.getElementById('quote-box').innerHTML = HTML_text;
 
-  // Code learned from this website: https://dev.to/karataev/set-css-styles-with-javascript-3nl5
+  // Code learned from these websites: https://dev.to/karataev/set-css-styles-with-javascript-3nl5 and https://www.tutorialrepublic.com/faq/how-to-change-the-background-color-of-a-web-page-using-javascript.php
   document.body.style.background = getRandomColor();
 
   return;
