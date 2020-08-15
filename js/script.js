@@ -118,8 +118,6 @@ const quotes = [
 
 function getRandomQuote () {
   let randomNumber =   Math.floor( ( Math.random() * quotes.length ) );
-  console.log(randomNumber);
-  console.log(quotes[randomNumber]);
   return quotes[randomNumber];
 }
 
