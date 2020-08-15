@@ -122,7 +122,10 @@ function getRandomQuote () {
 }
 
 /***
- * `printQuote` function
+ * `printQuote` function:
+ * 
+ * @returns {string} A HTML string displaying a random quote. 
+ * 
 ***/
 
 function printQuote () {
@@ -135,7 +138,7 @@ function printQuote () {
     HTML_text += `<span class="actor"> (Interpreted by:${quoteObject.actor}) </span>`;
   }
 
-  if ( quoteObject.keys().includes("citation") ) {
+  if ( Object.keys(quoteObject).includes("citation") ) {
     HTML_text += `<span class="citation"> ${quoteObject.citation} </span>`;
   }
 
@@ -143,11 +146,14 @@ function printQuote () {
     HTML_text += `<span class="author"> (written by:${quoteObject.author}) </span>`;
   }
 
-  if ( quoteObject.keys().includes("year") ) {
+  if ( Object.keys("quoteObject").includes("year") ) {
     HTML_text += `<span class="year"> ${quoteObject.year} </span>`;
   }
   
   HTML_text += `</p>`;
+
+  console.log(HTML_text);
+  return HTML_text;
 }
 
 document.getElementById('quote-box').innerHTML = printQuote(); 
