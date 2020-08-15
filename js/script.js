@@ -108,7 +108,12 @@ const quotes = [
 ];
 
 /***
- * `getRandomQuote` function
+ * `getRandomQuote` function: 
+ * Generates a random number from 0 to the index of the last object in the quotes array.
+ * Returns an object store in quotes array in the index corresponding to the random number.
+ * 
+ * @returns {Object} An quote object
+ * 
 ***/
 
 function getRandomQuote () {
@@ -118,10 +123,34 @@ function getRandomQuote () {
   return quotes[randomNumber];
 }
 
-getRandomQuote();
 /***
  * `printQuote` function
 ***/
+
+function printQuote () {
+  let quoteObject = {};
+  quoteObject = getRandomQuote();
+  let HTML_text = `<p class="quote"> ${quoteObject.quote} </p>
+    <p class="source"> ${quoteObject.source} `;
+
+  if ( quoteObject.tags[0] = "movie" ) {
+    HTML_text += `<span class="actor"> (Interpreted by:${quoteObject.actor}) </span>`;
+  }
+
+  if ( quoteObject.keys().includes("citation") ) {
+    HTML_text += `<span class="citation"> ${quoteObject.citation} </span>`;
+  }
+
+  if ( quoteObject.tags[0] = "book" ) {
+    HTML_text += `<span class="author"> (written by:${quoteObject.author}) </span>`;
+  }
+
+  if ( quoteObject.keys().includes("year") ) {
+    HTML_text += `<span class="year"> ${quoteObject.year} </span>`;
+  }
+  
+  HTML_text += `</p>`;
+}
 
 /***
  * click event listener for the print quote button
