@@ -123,6 +123,12 @@ function getRandomQuote () {
 
 /***
  * `printQuote` function:
+ * Prints a quote, as well as all of its corresponding properties in the Element "quote box"
+ * 1. Declares a object literal
+ * 2. Assigns a quote object to it via "getRandomQuote" function
+ * 3. Builds the HTML_text string with the HTML code, in order to display the quote information (following the steps provided in the Techdegree Project Instructions)
+ * 4. Added two extra "if statements" in order to concatenate to the HTML string the name of the actor (in case the quotation comes from a movie) or the name of the author (in case the quotation comes from a book)
+ * 5. Changes the background color with a transition time of 0.5 s
  * 
  * @returns {string} A HTML string displaying a random quote. 
  * 
@@ -152,8 +158,10 @@ function printQuote () {
   HTML_text += `</p>`;
   document.getElementById('quote-box').innerHTML = HTML_text;
 
+  // Changing background color
   // Code learned from these websites: https://dev.to/karataev/set-css-styles-with-javascript-3nl5 and https://www.tutorialrepublic.com/faq/how-to-change-the-background-color-of-a-web-page-using-javascript.php
   document.body.style.background = getRandomColor();
+  document.body.style.transition = "0.5s";
 
   return;
 }
@@ -161,7 +169,6 @@ function printQuote () {
 /***
  * `getRandomColor` function:
  * 1. Definies an array of 20 colours. The colours were generated using the website "https://htmlcolorcodes.com/color-picker/" using the "tetradic" method. 
- * It was given preference to darker colors to ensure a contrast with the white color of the quotes.
  * 2. Generates a random number between 0 and the last index of the "colors array".
  * 3. Returns the the element of the "colors array" corresponding to the random number.
  * 
@@ -193,13 +200,14 @@ function getRandomColor () {
     "#5b4e2c"
   ];
   let randomColor = Math.floor( ( Math.random() * colors.length ) );
-  console.log(randomColor);
   return ( colors[randomColor] );
 }
 
-
 // The function printQuote() is called when the page loads to ensure that the original quote written in the original HTML file is not displayed.
 printQuote();
+
+// Auto-refresh quotes each 10 seconds
+setInterval(printQuote, 10000);
 
 /***
  * click event listener for the print quote button
