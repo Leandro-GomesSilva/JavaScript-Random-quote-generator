@@ -152,9 +152,11 @@ function printQuote () {
   HTML_text += `</p>`;
 }
 
+document.getElementById('quote-box').innerHTML = printQuote(); 
+
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-//document.getElementById('load-quote').addEventListener("click", printQuote, false);
+document.getElementById('load-quote').addEventListener("click", printQuote, false);
