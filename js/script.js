@@ -194,7 +194,7 @@ function getRandomColor () {
   ];
   let randomColor = Math.floor( ( Math.random() * colors.length ) );
   console.log(randomColor);
-  return ( getRandomColor(randomColor) );
+  return ( colors[randomColor] );
 }
 
 
