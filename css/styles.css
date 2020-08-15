@@ -164,21 +164,3 @@ h1 {
     font-size: 1.25rem;
   }
 }
-
-.actor {
-  font-style: normal;
-}
-
-.actor:before {
-  content: ", ";
-  font-style: normal;
-}
-
-.author {
-  font-style: normal;
-}
-
-.author:before {
-  content: ", ";
-  font-style: normal;
-}

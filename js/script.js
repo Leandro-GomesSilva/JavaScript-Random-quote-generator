@@ -149,7 +149,6 @@ function printQuote () {
   }
 
   if ( quoteObject.tags[0] === "book" ) {
-    
     HTML_text += `<span class="author">written by ${quoteObject.author}</span>`;
   }
 
@@ -198,6 +197,25 @@ function getRandomColor () {
   let randomColor = [ rgbNumber(), rgbNumber(), rgbNumber() ];
   return (randomColor);
 }
+
+/***
+ * Adds to styles to the CSS file, for the classes "author" and "actor".
+ * The code was learned from the following site that was given by a Slack community member: https://dev.to/karataev/set-css-styles-with-javascript-3nl5
+ */
+
+let style = document.createElement('style');
+style.innerHTML = `
+.author:before {
+  content: ", ";
+  font-style: normal;
+}
+
+.actor:before {
+  content: ", ";
+  font-style: normal;
+}
+`;
+document.head.appendChild(style);
 
 // The function printQuote() is called when the page loads to ensure that the original quote written in the original HTML file is not displayed.
 printQuote();
