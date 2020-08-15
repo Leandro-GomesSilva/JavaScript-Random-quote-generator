@@ -149,64 +149,60 @@ function printQuote () {
   }
 
   if ( quoteObject.tags[0] === "book" ) {
+    
     HTML_text += `<span class="author">written by ${quoteObject.author}</span>`;
   }
 
-  if ( Object.keys("quoteObject").includes("year") ) {
+  if ( Object.keys(quoteObject).includes("year") ) {
     HTML_text += `<span class="year">${quoteObject.year}</span>`;
   } 
   HTML_text += `</p>`;
   document.getElementById('quote-box').innerHTML = HTML_text;
 
-  // Changing background color
-  // Code learned from these websites: https://dev.to/karataev/set-css-styles-with-javascript-3nl5 and https://www.tutorialrepublic.com/faq/how-to-change-the-background-color-of-a-web-page-using-javascript.php
-  document.body.style.background = getRandomColor();
+  /***
+   * Changing background color with a transition time of 0.5 seconds.
+   * The code to change the CSS style via JavaScrip was learned from these websites: https://dev.to/karataev/set-css-styles-with-javascript-3nl5 and https://www.tutorialrepublic.com/faq/how-to-change-the-background-color-of-a-web-page-using-javascript.php
+   * 1. Set an array of 3 randoms numbers from 0 to 255 to to array "rgbArray"
+   * 2. Set the background color of the "body" tag to the RGB color corresponding the three elements (indexes 0 to 2) of the array
+   * 3. Changes the text color to ensure readability according to the following rule:   
+   *    It checks if the generated random RGB color is too bright. I came with a very simple empirical solution to decide if a color is "bright" (after spending a lot of time trying to learn how to calculate complementary natural colors with a formula):
+   *    As we have 16,777,216 colors in the RGB color scheme and brighter colors have higher RGB values, I decided to set a "threshold" of 6,000,000 colors that are "dark". 
+   *    Any multiplication of the 3 RGB components that is above 6,000,000 will be considered "bright".
+   *    If the color is considered "bright", the quote text as well as the button text will change to black.
+  ***/
+  let rgbArray = getRandomColor();
+  document.body.style.background = `rgb(${rgbArray[0]}, ${rgbArray[1]}, ${rgbArray[2]})`;  
+  if ( rgbArray[0] * rgbArray[1] * rgbArray[2] > 6000000 ) {
+    document.body.style.color = "black";
+    document.getElementById('load-quote').style.color = "black";
+  } else {
+    document.body.style.color = "white";
+    document.getElementById('load-quote').style.color = "white";
+  }
   document.body.style.transition = "0.5s";
-
   return;
 }
 
 /***
  * `getRandomColor` function:
- * 1. Definies an array of 20 colours. The colours were generated using the website "https://htmlcolorcodes.com/color-picker/" using the "tetradic" method. 
- * 2. Generates a random number between 0 and the last index of the "colors array".
- * 3. Returns the the element of the "colors array" corresponding to the random number.
+ * 1. Defines an arrow function to generate a random rgb number from 0 to 255
+ * 2. Generates a array of three random numbers from 0 to 255
+ * 3. Returns the array with three numbers from 0 to 255 that corresponds to a RGB color code
  * 
- * @returns {string} A string containing a HEX color code
+ * @returns {Array.<number>} A array containing 3 numbers from 0 to 255
  * 
 ***/
 
 function getRandomColor () {
-  let colors = [
-    "#d2d51f",
-    "#1fd57d",
-    "#221fd5",
-    "#d51f77",
-    "#00c2c8",
-    "#6a00c8",
-    "#c80600",
-    "#5ec800",
-    "#df6f0c",
-    "#13df0c",
-    "#0c7cdf",
-    "#d80cdf",
-    "#813d09",
-    "#790981",
-    "#094d81",
-    "#118109",
-    "#2c5b36",
-    "#2c3a5b",
-    "#5b2c51",
-    "#5b4e2c"
-  ];
-  let randomColor = Math.floor( ( Math.random() * colors.length ) );
-  return ( colors[randomColor] );
+  const rgbNumber = () => {return Math.floor( ( Math.random() * 256 ) )};
+  let randomColor = [ rgbNumber(), rgbNumber(), rgbNumber() ];
+  return (randomColor);
 }
 
 // The function printQuote() is called when the page loads to ensure that the original quote written in the original HTML file is not displayed.
 printQuote();
 
-// Auto-refresh quotes each 10 seconds
+// Auto-refresh quote each 10 seconds
 setInterval(printQuote, 10000);
 
 /***
