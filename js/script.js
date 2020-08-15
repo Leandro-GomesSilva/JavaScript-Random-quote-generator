@@ -112,19 +112,20 @@ const quotes = [
 ***/
 
 function getRandomQuote () {
-  let randomNumber =   Math.floor( ( Math.random() * quotes.length + 1 ) );
-
+  let randomNumber =   Math.floor( ( Math.random() * quotes.length ) );
+  console.log(randomNumber);
+  console.log(quotes[randomNumber]);
+  return quotes[randomNumber];
 }
 
+getRandomQuote();
 /***
  * `printQuote` function
 ***/
-
-
 
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-document.getElementById('load-quote').addEventListener("click", printQuote, false);
+//document.getElementById('load-quote').addEventListener("click", printQuote, false);
