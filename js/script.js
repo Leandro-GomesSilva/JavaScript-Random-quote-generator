@@ -135,7 +135,7 @@ function printQuote () {
     <p class="source">${quoteObject.source}`;
 
   if ( quoteObject.tags[0] === "movie" ) {
-    HTML_text += `<span class="actor">interpreted by: ${quoteObject.actor}</span>`;
+    HTML_text += `<span class="actor">interpreted by ${quoteObject.actor}</span>`;
   }
 
   if ( Object.keys(quoteObject).includes("citation") ) {
@@ -143,7 +143,7 @@ function printQuote () {
   }
 
   if ( quoteObject.tags[0] === "book" ) {
-    HTML_text += `<span class="author">written by: ${quoteObject.author}</span>`;
+    HTML_text += `<span class="author">written by ${quoteObject.author}</span>`;
   }
 
   if ( Object.keys("quoteObject").includes("year") ) {
@@ -151,21 +151,25 @@ function printQuote () {
   } 
   HTML_text += `</p>`;
   document.getElementById('quote-box').innerHTML = HTML_text;
+
+  // Code learned from this website: https://dev.to/karataev/set-css-styles-with-javascript-3nl5
+  document.body.style.background = getRandomColor();
+
   return;
 }
 
 /***
- * `changeBackgroundColor` function:
+ * `getRandomColor` function:
  * 1. Definies an array of 20 colours. The colours were generated using the website "https://htmlcolorcodes.com/color-picker/" using the "tetradic" method. 
- * It was given preference to darker colors to ensure a contrast with the white colour of the quotes.
+ * It was given preference to darker colors to ensure a contrast with the white color of the quotes.
  * 2. Generates a random number between 0 and the last index of the "colors array".
  * 3. Returns the the element of the "colors array" corresponding to the random number.
  * 
- * @returns {string} A string containing a color
+ * @returns {string} A string containing a HEX color code
  * 
 ***/
 
-function changeBackgroundColor () {
+function getRandomColor () {
   let colors = [
     "#d2d51f",
     "#1fd57d",
@@ -189,8 +193,10 @@ function changeBackgroundColor () {
     "#5b4e2c"
   ];
   let randomColor = Math.floor( ( Math.random() * colors.length ) );
-  return (randomNumber);
+  console.log(randomColor);
+  return ( getRandomColor(randomColor) );
 }
+
 
 // The function printQuote() is called when the page loads to ensure that the original quote written in the original HTML file is not displayed.
 printQuote();
