@@ -132,27 +132,24 @@ function printQuote () {
   let quoteObject = {};
   quoteObject = getRandomQuote();
   let HTML_text = `<p class="quote"> ${quoteObject.quote} </p>
-    <p class="source"> ${quoteObject.source} `;
+    <p class="source"> ${quoteObject.source}`;
 
-  if ( quoteObject.tags[0] = "movie" ) {
-    HTML_text += `<span class="actor"> (Interpreted by:${quoteObject.actor}) </span>`;
+  if ( quoteObject.tags[0] === "movie" ) {
+    HTML_text += `<span class="year"> (Interpreted by:${quoteObject.actor}) </span>`;
   }
 
   if ( Object.keys(quoteObject).includes("citation") ) {
     HTML_text += `<span class="citation"> ${quoteObject.citation} </span>`;
   }
 
-  if ( quoteObject.tags[0] = "book" ) {
-    HTML_text += `<span class="author"> (written by:${quoteObject.author}) </span>`;
+  if ( quoteObject.tags[0] === "book" ) {
+    HTML_text += `<span class="year"> (written by:${quoteObject.author}) </span>`;
   }
 
   if ( Object.keys("quoteObject").includes("year") ) {
     HTML_text += `<span class="year"> ${quoteObject.year} </span>`;
-  }
-  
+  } 
   HTML_text += `</p>`;
-
-  console.log(HTML_text);
   return HTML_text;
 }
 
