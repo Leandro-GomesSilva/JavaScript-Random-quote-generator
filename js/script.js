@@ -54,7 +54,7 @@ const quotes = [
     tags: ["movie", "enthusiasm", "fiction"]
   },
   { 
-    quote: "Success is no accident. It is hard work, perseverance, learning, studying, sacrifice and most of all, love of what you are doing or learning to do",
+    quote: "Success is no accident. It is hard work, perseverance, learning, studying, sacrifice and most of all, love of what you are doing or learning to do.",
     source: "Edson Arantes do Nascimento (Pelé)",
     tags: ["athlete", "motivational", "real"]
   },
@@ -64,7 +64,7 @@ const quotes = [
     tags: ["athlete", "motivational", "real"]
   },
   { 
-    quote: "Government of the People, by the People, for the People",
+    quote: "Government of the People, by the People, for the People.",
     source: "Abraham Lincoln",
     year: 1863,
     tags: ["politics", "reflection", "real"]
@@ -135,7 +135,7 @@ function printQuote () {
     <p class="source"> ${quoteObject.source}`;
 
   if ( quoteObject.tags[0] === "movie" ) {
-    HTML_text += `<span class="year"> (Interpreted by:${quoteObject.actor}) </span>`;
+    HTML_text += `<span class="year"> (Interpreted by: ${quoteObject.actor}) </span>`;
   }
 
   if ( Object.keys(quoteObject).includes("citation") ) {
@@ -143,17 +143,16 @@ function printQuote () {
   }
 
   if ( quoteObject.tags[0] === "book" ) {
-    HTML_text += `<span class="year"> (written by:${quoteObject.author}) </span>`;
+    HTML_text += `<span class="year"> (written by: ${quoteObject.author}) </span>`;
   }
 
   if ( Object.keys("quoteObject").includes("year") ) {
     HTML_text += `<span class="year"> ${quoteObject.year} </span>`;
   } 
   HTML_text += `</p>`;
-  return HTML_text;
+  document.getElementById('quote-box').innerHTML = HTML_text;
+  return;
 }
-
-document.getElementById('quote-box').innerHTML = printQuote(); 
 
 /***
  * click event listener for the print quote button
