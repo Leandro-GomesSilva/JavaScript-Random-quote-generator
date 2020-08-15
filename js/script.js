@@ -131,28 +131,69 @@ function getRandomQuote () {
 function printQuote () {
   let quoteObject = {};
   quoteObject = getRandomQuote();
-  let HTML_text = `<p class="quote"> ${quoteObject.quote} </p>
-    <p class="source"> ${quoteObject.source}`;
+  let HTML_text = `<p class="quote">${quoteObject.quote}</p>
+    <p class="source">${quoteObject.source}`;
 
   if ( quoteObject.tags[0] === "movie" ) {
-    HTML_text += `<span class="year"> (Interpreted by: ${quoteObject.actor}) </span>`;
+    HTML_text += `<span class="actor">interpreted by: ${quoteObject.actor}</span>`;
   }
 
   if ( Object.keys(quoteObject).includes("citation") ) {
-    HTML_text += `<span class="citation"> ${quoteObject.citation} </span>`;
+    HTML_text += `<span class="citation">${quoteObject.citation}</span>`;
   }
 
   if ( quoteObject.tags[0] === "book" ) {
-    HTML_text += `<span class="year"> (written by: ${quoteObject.author}) </span>`;
+    HTML_text += `<span class="author">written by: ${quoteObject.author}</span>`;
   }
 
   if ( Object.keys("quoteObject").includes("year") ) {
-    HTML_text += `<span class="year"> ${quoteObject.year} </span>`;
+    HTML_text += `<span class="year">${quoteObject.year}</span>`;
   } 
   HTML_text += `</p>`;
   document.getElementById('quote-box').innerHTML = HTML_text;
   return;
 }
+
+/***
+ * `changeBackgroundColor` function:
+ * 1. Definies an array of 20 colours. The colours were generated using the website "https://htmlcolorcodes.com/color-picker/" using the "tetradic" method. 
+ * It was given preference to darker colors to ensure a contrast with the white colour of the quotes.
+ * 2. Generates a random number between 0 and the last index of the "colors array".
+ * 3. Returns the the element of the "colors array" corresponding to the random number.
+ * 
+ * @returns {string} A string containing a color
+ * 
+***/
+
+function changeBackgroundColor () {
+  let colors = [
+    "#d2d51f",
+    "#1fd57d",
+    "#221fd5",
+    "#d51f77",
+    "#00c2c8",
+    "#6a00c8",
+    "#c80600",
+    "#5ec800",
+    "#df6f0c",
+    "#13df0c",
+    "#0c7cdf",
+    "#d80cdf",
+    "#813d09",
+    "#790981",
+    "#094d81",
+    "#118109",
+    "#2c5b36",
+    "#2c3a5b",
+    "#5b2c51",
+    "#5b4e2c"
+  ];
+  let randomColor = Math.floor( ( Math.random() * colors.length ) );
+  return (randomNumber);
+}
+
+// The function printQuote() is called when the page loads to ensure that the original quote written in the original HTML file is not displayed.
+printQuote();
 
 /***
  * click event listener for the print quote button
