@@ -5,4 +5,4 @@
  Main technologies: JavaScript<br>
  Auxiliary technologies: HTML, CSS<br>
  Complexity level: Beginner<br>
- Concepts: Variables, Loops, Conditionals, Object literal, Random number, DOM traversing, DOM element creation, Timing Events<br>
+ Concepts: Variables, Loops, Conditionals, Object literal, Random number, DOM manipulation, Time Events<br>
