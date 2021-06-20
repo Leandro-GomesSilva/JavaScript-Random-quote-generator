@@ -5,4 +5,5 @@
  Main technologies: JavaScript<br>
  Auxiliary technologies: HTML, CSS<br>
  Complexity level: Beginner<br>
+ Estimated Time to Complete: 9 hours<br>
  Concepts: Variables, Loops, Conditionals, Object literal, Random number, DOM manipulation, Time Events<br>
